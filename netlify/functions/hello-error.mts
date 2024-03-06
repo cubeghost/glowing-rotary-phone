@@ -21,6 +21,6 @@ class CustomError {
   }
 }
 
-export default async (req, context) => {
+export default async (request, context) => {
   throw new CustomError("lorem ipsum", "lorem ipsum dolor sit amet", 404);
 };
