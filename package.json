@@ -1,0 +1,13 @@
+{
+  "name": "glowing-rotary-phone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cubeghost/glowing-rotary-phone.git",
+  "author": "alex baldwin <alex.baldwin@netlify.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/functions": "^2.6.0",
+    "@netlify/planetscale": "^1.1.0",
+    "@planetscale/database": "^1.16.0"
+  }
+}
