@@ -6,8 +6,16 @@
   "author": "alex baldwin <alex.baldwin@netlify.com>",
   "license": "MIT",
   "dependencies": {
+    "@netlify/auth0": "^0.1.3",
+    "@netlify/emails": "^1.1.0",
     "@netlify/functions": "^2.6.0",
     "@netlify/planetscale": "^1.1.0",
-    "@planetscale/database": "^1.16.0"
+    "@planetscale/database": "^1.16.0",
+    "@serverless-jwt/jwt-verifier": "^0.2.1"
+  },
+  "devDependencies": {
+    "eta": "^3.2.0",
+    "glob": "^10.3.10",
+    "lodash.pick": "^4.4.0"
   }
 }

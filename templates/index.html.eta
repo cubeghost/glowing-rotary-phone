@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= it.env.SITE_NAME %></title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+    <style type="text/css">
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>｡+ﾟ.。+。(´ω｀*)♪♪</h1>
+      <button id="login">log in</button>
+      <button id="fetch">fetch</button>
+    </div>
+    <script type="module">
+      const element = (tagName, textOrFn, fn) => {
+        const el = document.createElement(tagName);
+
+        if (textOrFn && typeof textOrFn === "string") {
+          el.innerText = textOrFn;
+        } else if (textOrFn && typeof textOrFn === "function") {
+          textOrFn(el);
+        }
+
+        if (fn && typeof fn === "function") {
+          fn(textOrFn);
+        }
+
+        return el;
+      };
+
+      const main = document.getElementById("main");
+
+      const auth0client = await auth0.createAuth0Client({
+        domain: "<%= it.env.AUTH0_DOMAIN %>",
+        clientId: "<%= it.env.AUTH0_CLIENT_ID %>",
+        authorizationParams: {
+          audience: "<%= it.env.AUTH0_AUDIENCE %>",
+          redirect_uri: window.location.toString(),
+        },
+      }); 
+
+      const isLoggedIn = (user) => {
+        document.getElementById("login")?.classList.add("hidden");
+        main.appendChild(element("p", `hello ${user.name}`));
+      };
+
+      try {
+        const redirectResult = await auth0client.handleRedirectCallback();
+        console.log({ redirectResult });
+      } catch (err) {
+        console.error(err);
+      }
+
+      try {
+        const user = await auth0client.getUser();
+        if (user) {
+          isLoggedIn(user);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+
+      document.getElementById("login").addEventListener("click", async () => {
+        await auth0client.loginWithRedirect();
+      });
+
+      document.getElementById("fetch").addEventListener("click", async () => {
+        const accessToken = await auth0client.getTokenSilently();
+
+        const res = await fetch("/.netlify/functions/auth", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          console.log({ data });
+        } else {
+          // TODO
+        }
+      });
+    </script>
+  </body>
+</html>
