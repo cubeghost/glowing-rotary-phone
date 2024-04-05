@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@netlify/auth0": "^0.1.3",
+    "@netlify/edge-functions": "^2.4.3",
     "@netlify/emails": "^1.1.0",
     "@netlify/functions": "^2.6.0",
     "@netlify/planetscale": "^1.1.0",

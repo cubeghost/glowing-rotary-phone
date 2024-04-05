@@ -72,7 +72,7 @@
       document.getElementById("fetch").addEventListener("click", async () => {
         const accessToken = await auth0client.getTokenSilently();
 
-        const res = await fetch("/.netlify/functions/auth", {
+        const res = await fetch("/me", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

@@ -22,6 +22,11 @@
     "@netlify/integrations" "^0.5.0"
     "@serverless-jwt/netlify" "^0.2.1"
 
+"@netlify/edge-functions@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@netlify/edge-functions/-/edge-functions-2.4.3.tgz#d7c3473f26e4d6761d44ffe01f35cd41ae264227"
+  integrity sha512-Ts2kUR0KM/7qlIDpJ+ZIZBrRpx6OL3BwrYUR2/sQDAe/8VajoO+Voit/H7xd6Qj6EPBHC56jlWdyFuTHY1HB8Q==
+
 "@netlify/emails@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@netlify/emails/-/emails-1.1.0.tgz#226ec4ff493db2ebf2bcc9758eb2eb1911550734"
